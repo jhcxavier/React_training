@@ -1,5 +1,4 @@
-import React, {useState,useEffect} from 'react';
-// import logo from './logo.svg';
+import React, {useState} from 'react';
 import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/Textfield';
