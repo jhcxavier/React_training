@@ -8,15 +8,14 @@ import Button from '@material-ui/core/Button';
 
 const Validation=()=>{
 
-  
-  
-  const [firstname,setFirstname] = useState('')
-  const [listOfNames,setListOfNames] = useState([])
-  
-  useEffect(()=>{
-    
-  }, [firstname])
+  const [person,setPerson] = useState({
+    firstName:'',
+    lastName:'',
+    email:'',
+    phoneNumber:''
+  })
 
+  const [listOfNames,setListOfNames] = useState([])
   return (
     <span>
     <Paper elevation={3}
@@ -33,20 +32,21 @@ const Validation=()=>{
             variant="outlined" 
             size="small" 
             label="First Name" 
-            defaultValue={firstname}
-            onChange={ (e)=> {setFirstname(e.target.value)}}
+            defaultValue={person.firstName}
+            onChange={ (e)=> {setPerson({...person, firstName:e.target.value})}}
             InputLabelProps={{
               shrink:true
             }}
             />
         </Box>
         <Box padding={1}>
-          <TextField
+          <TextField            
             required 
             variant="outlined" 
             size="small" 
             label="Last Name" 
-            defaultValue={''}
+            defaultValue={person.lastName}
+            onChange={ (e)=> {setPerson({...person, lastName:e.target.value})}}
             InputLabelProps={{
               shrink:true
             }}
@@ -57,21 +57,22 @@ const Validation=()=>{
             required 
             variant="outlined" 
             size="small" 
-            label="Age" 
-            defaultValue={''}
+            label="Email" 
+            defaultValue={person.email}
+            onChange={ (e)=> {setPerson({...person, email:e.target.value})}}
             InputLabelProps={{
               shrink:true
             }}
             />
-        </Box>
-        
+        </Box>        
         <Box padding={1}>
           <TextField
             required             
             variant="outlined" 
             size="small" 
-            label="Country" 
-            defaultValue={''}
+            label="Phone Number" 
+            defaultValue={person.phoneNumber}
+            onChange={ (e)=> {setPerson({...person, phoneNumber:e.target.value})}}
             InputLabelProps={{
               shrink:true
             }}
@@ -83,8 +84,7 @@ const Validation=()=>{
                 Cancel
               </Button>
               <Button onClick={()=> { 
-                setListOfNames([...listOfNames,firstname])
-                console.log(listOfNames)
+                setListOfNames([...listOfNames,person])                
               }}
                variant='contained' size='small' style={{marginRight:'5px', color:'blue', backgroundColor:'white', border:'1px solid blue'}}>
                 Create
@@ -98,18 +98,15 @@ const Validation=()=>{
         paddingBottom: '10px',
         marginTop:'10px'
       }}>
-
         <Grid container>
-          <Box>
             {listOfNames && listOfNames.map((e,index)=> (
-              <h3 key={index} >{e}</h3>
-              
+            <Box key={index}>    
+              <span  >{e.firstName + ' ' + e.lastName + ' ' + e.email +  ' ' +e.phoneNumber} </span>              
+            </Box>     
             ))}
-          </Box> 
         </Grid>
     </Paper>    
     </span>
   )
 }
-
 export default Validation;
