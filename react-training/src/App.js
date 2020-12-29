@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/Textfield';
@@ -12,9 +12,18 @@ const Validation=()=>{
     lastName:'',
     email:'',
     phoneNumber:''
-  })
+  }) 
 
   const [listOfNames,setListOfNames] = useState([])
+
+  const cleanFields = () => {
+    setPerson({firstName:'', lastName:'', email:'', phoneNumber:'' })
+  }
+
+  useEffect(() => {
+    cleanFields()
+  }, [listOfNames]);
+
   return (
     <span>
     <Paper elevation={3}
@@ -26,12 +35,12 @@ const Validation=()=>{
       }}>
       <Grid container>
         <Box padding={1}>
-          <TextField
+          <TextField            
             required 
             variant="outlined" 
             size="small" 
             label="First Name" 
-            defaultValue={person.firstName}
+            value={person.firstName}
             onChange={ (e)=> {setPerson({...person, firstName:e.target.value})}}
             InputLabelProps={{
               shrink:true
@@ -39,7 +48,7 @@ const Validation=()=>{
             />
         </Box>
         <Box padding={1}>
-          <TextField            
+          <TextField                       
             required 
             variant="outlined" 
             size="small" 
@@ -52,7 +61,7 @@ const Validation=()=>{
             />
         </Box>
         <Box padding={1}>
-          <TextField
+          <TextField            
             required 
             variant="outlined" 
             size="small" 
@@ -82,8 +91,8 @@ const Validation=()=>{
               <Button variant='contained' size='small' style={{marginRight:'5px', color:'blue', backgroundColor:'white', border:'1px solid blue'}}>
                 Cancel
               </Button>
-              <Button onClick={()=> { 
-                setListOfNames([...listOfNames,person])                
+              <Button onClick={()=> {                 
+                setListOfNames([...listOfNames,person])           
               }}
                variant='contained' size='small' style={{marginRight:'5px', color:'blue', backgroundColor:'white', border:'1px solid blue'}}>
                 Create
