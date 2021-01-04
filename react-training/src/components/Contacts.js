@@ -5,7 +5,10 @@ import TextField from "@material-ui/core/Textfield";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 
-const Contact = () => {
+const Contact = (getContact) => {
+
+  
+
   const [person, setPerson] = useState({
     firstName: "",
     lastName: "",
@@ -115,7 +118,8 @@ const Contact = () => {
           </Button>
           <Button
             onClick={() => {
-              setListOfNames([...listOfNames, person]);
+              //setListOfNames([...listOfNames, person]);
+              getContact(person)
             }}
             variant="contained"
             size="small"
@@ -130,32 +134,7 @@ const Contact = () => {
           </Button>
         </Box>
       </Paper>
-      <Paper
-        elevation={3}
-        style={{
-          borderRadius: "4px",
-          marginBottom: "15px",
-          paddingBottom: "10px",
-          marginTop: "10px",
-        }}
-      >
-        <Grid container>
-          {listOfNames &&
-            listOfNames.map((e, index) => (
-              <Box key={index}>
-                <span>
-                  {e.firstName +
-                    " " +
-                    e.lastName +
-                    " " +
-                    e.email +
-                    " " +
-                    e.phoneNumber}{" "}
-                </span>
-              </Box>
-            ))}
-        </Grid>
-      </Paper>
+      
     </span>
   );
 };
