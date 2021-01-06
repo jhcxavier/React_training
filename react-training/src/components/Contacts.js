@@ -1,21 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Box from "@material-ui/core/Box";
 import Paper from "@material-ui/core/Paper";
 import TextField from "@material-ui/core/Textfield";
 import Grid from "@material-ui/core/Grid";
+import { Context } from "../store/appContext";
 import Button from "@material-ui/core/Button";
 
-const Contact = ({getContact}) => {
-
-  
-
+const Contact = ({ getContact }) => {
   const [person, setPerson] = useState({
     firstName: "",
     lastName: "",
     email: "",
     phoneNumber: "",
   });
-
+  const { store } = useContext(Context);
+  console.log("test store", store.contact);
   const [listOfNames, setListOfNames] = useState([]);
 
   const cleanFields = () => {
@@ -119,8 +118,8 @@ const Contact = ({getContact}) => {
           <Button
             onClick={() => {
               //setListOfNames([...listOfNames, person]);
-              console.log('person' , person)
-              getContact(true)
+              console.log("person", person);
+              getContact(true);
             }}
             variant="contained"
             size="small"
@@ -135,7 +134,6 @@ const Contact = ({getContact}) => {
           </Button>
         </Box>
       </Paper>
-      
     </span>
   );
 };
