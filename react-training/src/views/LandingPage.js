@@ -46,7 +46,7 @@ const LandingPage = () => {
         </Button>
       </Box>
       <Box>        
-        <Contacts getContact={getContact}/>
+        <Contacts getContact={(e)=> setName(e.target.value)} />
 
       </Box>
       <Box>

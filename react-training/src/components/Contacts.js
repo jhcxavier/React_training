@@ -5,7 +5,7 @@ import TextField from "@material-ui/core/Textfield";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 
-const Contact = (getContact) => {
+const Contact = ({getContact}) => {
 
   
 
@@ -119,7 +119,8 @@ const Contact = (getContact) => {
           <Button
             onClick={() => {
               //setListOfNames([...listOfNames, person]);
-              getContact(person)
+              console.log('person' , person)
+              getContact(true)
             }}
             variant="contained"
             size="small"
