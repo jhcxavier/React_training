@@ -13,8 +13,9 @@ const Contact = ({ getContact }) => {
     email: "",
     phoneNumber: "",
   });
-  const { store } = useContext(Context);
-  console.log("test store", store.contact);
+  const { store, actions } = useContext(Context);
+  // console.log("test store", store.contact);
+
   const [listOfNames, setListOfNames] = useState([]);
 
   const cleanFields = () => {
@@ -22,9 +23,9 @@ const Contact = ({ getContact }) => {
   };
 
   useEffect(() => {
-    cleanFields();
-  }, [listOfNames]);
-
+    console.log(store.contacts);
+  }, [store.contacts]);
+  console.log("data from store", store.contacts);
   return (
     <span>
       <Paper
@@ -116,11 +117,7 @@ const Contact = ({ getContact }) => {
             Cancel
           </Button>
           <Button
-            onClick={() => {
-              //setListOfNames([...listOfNames, person]);
-              console.log("person", person);
-              getContact(true);
-            }}
+            onClick={() => {}}
             variant="contained"
             size="small"
             style={{
@@ -128,6 +125,9 @@ const Contact = ({ getContact }) => {
               color: "blue",
               backgroundColor: "white",
               border: "1px solid blue",
+            }}
+            onClick={() => {
+              actions.addContact(person);
             }}
           >
             Create

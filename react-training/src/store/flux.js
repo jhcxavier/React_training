@@ -5,7 +5,12 @@ const getState = ({ getStore, getActions, setStore }) => {
     store: {
       contacts: [],
     },
-    actions: {},
+    actions: {
+      addContact: (person) => {
+        // console.log("person", person);
+        setStore({ contacts: person });
+      },
+    },
   };
 };
 export default getState;
