@@ -23,7 +23,7 @@ const LandingPage = () => {
             border: "1px solid blue",
           }}
         >
-          Create
+          Add
         </Button>
       </Box>
     </Container>
